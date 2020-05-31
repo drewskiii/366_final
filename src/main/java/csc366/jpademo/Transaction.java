@@ -31,7 +31,7 @@ public class Transaction {
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = true)
+    @JoinColumn(name = "customer_id", nullable = true)  // name = "customer_id" from customer's "mappedBy"
     private Customer customer;
 
     public Transaction() {}
