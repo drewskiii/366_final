@@ -20,13 +20,19 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
     Customer findByLastName(String lastName);
 
-    // List<Customer> findByState(String state);
+    @Query("from Customer c where c.state = :state")
+    List<Customer> findByState(@Param("state") String state);
+
     @Query("from Customer c where c.city = :city")
     List<Customer> findByCity(@Param("city") String city);
 
     // JPQL query  (validity check on application init)
     @Query("from Customer c where c.firstName = :name or c.lastName = :name")
     Customer findByNameJpql(@Param("name") String name);
+
+    // JPQL query with join
+    @Query("select c from Customer c join c.transaction trans where c.firstName = :name or c.lastName = :name")
+    Customer findByNameWithTransactionJpql(@Param("name") String name);
 
     // JPQL query with join
     // @Query("select p from Person p join p.addresses addr where p.firstName = :name or p.lastName = :name")

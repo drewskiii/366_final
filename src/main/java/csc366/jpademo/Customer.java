@@ -98,6 +98,15 @@ public class Customer {
         this.state = state;
     }
 
+    public void addTransaction(Transaction t) {
+        transaction.add(t);
+        t.setCustomer(this);
+    }
+
+    public List<Transaction> getTransactions() {
+        return transaction;
+    }
+
     @Override
     public String toString() {
 	StringJoiner sj = new StringJoiner("," , Customer.class.getSimpleName() + "[" , "]");

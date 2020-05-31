@@ -27,7 +27,7 @@ public class Transaction {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    private int totalPrice;
+    private double totalPrice;
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,7 +36,7 @@ public class Transaction {
 
     public Transaction() {}
 
-    public Transaction(int totalPrice, Date date) {
+    public Transaction(double totalPrice, Date date) {
         this.totalPrice = totalPrice;
         this.date = date;
     }
@@ -48,10 +48,10 @@ public class Transaction {
         this.id = id;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
-    public void setTotalPrice(int price) {
+    public void setTotalPrice(float price) {
         this.totalPrice = price;
     }
 
@@ -75,15 +75,15 @@ public class Transaction {
     public String toString()
     {
 	StringJoiner sj = new StringJoiner("," , Transaction.class.getSimpleName() + "[" , "]");
-	    sj.add(id.toString()).add(Integer.toString(totalPrice));
+	    sj.add(id.toString()).add(Double.toString(totalPrice));
 	    return sj.toString();
     }
 
     @Override
     public boolean equals(Object o) {
 	if (this == o) return true;
-	if (!(o instanceof Address)) return false;
-	return id != null && id.equals(((Address) o).getId());
+	if (!(o instanceof Transaction)) return false;
+	return id != null && id.equals(((Transaction) o).getId());
     }
 
     @Override
