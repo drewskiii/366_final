@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.UniqueConstraint;
@@ -31,9 +32,9 @@ public class Manager {
     @Column(unique=true, name="email")
     private String email;
 
-    @OnetoOne(mappedBy="location")
+    @OneToOne(mappedBy="location")
     @JoinColumn(name = "location_id", nullable = false)
-    private Locaiton location;
+    private Location location;
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
@@ -84,7 +85,7 @@ public class Manager {
     @Override
     public String toString() {
     	StringJoiner sj = new StringJoiner("," , Manager.class.getSimpleName() + "[" , "]");
-    	sj.add(id.toString()).add(hoursPerWeek).add(email);
+    	sj.add(id.toString()).add(String.valueOf(hoursPerWeek)).add(email);
     	return sj.toString();
     }
 

@@ -8,10 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.OrderColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.UniqueConstraint;
@@ -39,7 +41,7 @@ public class Location {
     private String state;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "manager_id", referenceColumnName = "id")
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
     
     public Location() { }
