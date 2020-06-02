@@ -20,6 +20,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.TestPropertySource;
+// import org.springframework.data.domain.PageRequest;
+// import org.springframework.data.domain.Pageable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,20 +97,36 @@ public class CustomerTests {
     @Test
     @Order(1)
     public void testCustomerWithMostTransactions2020() {
-
+        Customer c = customerRepository.findMostTransactions();
+        log.info(c.toString());
+        assertEquals(c.getLastName(), customer3.getLastName());
     }
-
+    
+    @Test
+    @Order(2)
     public void testCustomerWhoSpentTheMost() {
-
+        // double c = customerRepository.findMostSpent();
+        Customer c = customerRepository.findMostSpent();
+        log.info(c.toString());
+        assertEquals(c.getLastName(), customer3.getLastName());
     }
 
-    public void testCustomerWhoSpentTheMostCoffee() {
-
-    }
-
+    @Test
+    @Order(3)
     public void testStateWithMostCustomers() {
-        
+        List<Customer> states = customerRepository.findMostState();
+        System.out.println(states);
+        // log.info(state);
+        // assertEquals(state, "CA");
     }
+    // @Test
+    // @Order(3)
+    // public void testCustomerWhoSpentTheMostCoffee() {
+
+    // }
+    
+
+    
 
 
 }

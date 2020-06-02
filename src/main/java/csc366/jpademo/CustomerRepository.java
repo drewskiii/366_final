@@ -1,7 +1,10 @@
 package csc366.jpademo;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+// import org.springframework.data.domain.PageRequest;
+// import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -34,8 +37,25 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
     @Query("select c from Customer c join c.transaction trans where c.firstName = :name or c.lastName = :name")
     Customer findByNameWithTransactionJpql(@Param("name") String name);
 
-    @Query("select c from Customer c join c.transaction trans where ")
 
+    // @Query(value = "select c, count(c) from Customer c join c.transaction trans group by c order by count(c) DESC")
+    // List<Customer> findMostTransactions();
+
+    @Query(value = "select c.id, count(*) from Customer c join Transaction t on t.customer_id = c.id group by c.id order by count(*) DESC limit 1", nativeQuery = true)
+    Customer findMostTransactions();
+
+    @Query(value = "select c.id, sum(totalprice) as tot from customer c join transaction trans on trans.customer_id = c.id group by c.id order by tot DESC limit 1", nativeQuery = true)
+    Customer findMostSpent();
+
+
+
+    @Query(value = "select n.state, max(n.state_cnt) mx from " +
+                        "(select count(*) as state_cnt, c.state as state" +
+                        "from customer as c " +
+                        "group by c.state) as n " + 
+                    "group by n.state;", nativeQuery = true)
+    List<Customer> findMostState();
+    // double findMostSpent();
     // JPQL query with join
     // @Query("select p from Person p join p.addresses addr where p.firstName = :name or p.lastName = :name")
     // Person findByNameWithAddressJpql(@Param("name") String name);

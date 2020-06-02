@@ -27,12 +27,16 @@ public class Transaction {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    private double totalPrice;
+    // private double totalPrice;
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = true)  // name = "customer_id" from customer's "mappedBy"
     private Customer customer;
+
+    @Column(name = "totalprice")
+    private double totalPrice;
+
 
     public Transaction() {}
 
