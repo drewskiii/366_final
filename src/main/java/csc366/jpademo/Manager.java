@@ -37,7 +37,7 @@ public class Manager {
     private Location location;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Owner owner;
     
     public Manager() { }

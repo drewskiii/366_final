@@ -24,7 +24,7 @@ public class Owner {
    private String email;
 
    @ManyToOne
-   @JoinColumn(name = "position_id",  referencedColumnName = "id")
+   @JoinColumn(name = "position_id", referencedColumnName = "id")
    private long position;
 
    @Column(name="date_appointed")

@@ -60,7 +60,8 @@ public class Demo1 {
 	person.addAddress(addrCP);
 	personRepository.saveAndFlush(person);
     }
-    
+	 
+	 /* For reference, needs to be removed
     @Test
     @Order(1)
     public void testPersonAndAddress() {
@@ -113,6 +114,6 @@ public class Demo1 {
 
 	p = personRepository.findByNameWithAddressJpql("test");
 	log.info(p.toString());
-    }
+    }*/
 
 }
