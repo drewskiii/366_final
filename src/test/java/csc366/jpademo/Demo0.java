@@ -51,6 +51,7 @@ public class Demo0 {
 	personRepository.saveAndFlush(person);
     }
     
+    /* For reference, needs to be removed
     @Test
     @Order(1)
     public void testSavePerson() {
@@ -106,5 +107,5 @@ public class Demo0 {
 	Person p = personRepository.findByNameSql("test");
 	assertEquals(p.getFirstName(), person.getFirstName());
     }
-
+    */
 }
