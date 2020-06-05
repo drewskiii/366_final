@@ -15,7 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.CascadeType;
 
 import javax.validation.constraints.NotNull;
 
@@ -68,16 +70,16 @@ public class Supplier {
         this.address = address;
     }
 
-    public List<locations> getLocations() {
+    public List<Location> getLocations() {
         return this.locations;
     }
     public void addLocation(Location l) {
         this.locations.add(l);
-        l.setSupplier(this);
+        // l.setSupplier(this);
     }
     public void removeLocation(Location l) {
         this.locations.remove(l);
-        l.setSupplier(null);
+        // l.setSupplier(null);
     }
 
     public List<ShipmentOrder> getShipmentOrders() {
@@ -95,7 +97,7 @@ public class Supplier {
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("," , Supplier.class.getSimpleName() + "[" , "]");
-        sj.add(id.toString()).add(address).add("locations="+locations.toString()).add("shipment orders="+shipmentOrders.toString());
+        // sj.add(id.toString()).add(address).add("locations="+locations.toString()).add("shipment orders="+shipmentOrders.toString());
         return sj.toString();
     }
 

@@ -3,6 +3,7 @@ package csc366.jpademo;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringJoiner;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.CascadeType;
 
 import javax.validation.constraints.NotNull;
 
@@ -37,7 +40,7 @@ public class ShipmentOrder {
     @JoinColumn(name = "location_id", nullable = true)
     private Location location;
 
-    // This part goes in the location table
+    // This part goes in the location table (?)
     // @OneToMany(
     //     mappedBy = "location",
     //     cascade = CascadeType.ALL,
@@ -72,11 +75,11 @@ public class ShipmentOrder {
     }
     
     public Location getLocation() {
-        return this.Location;
+        return this.location;
     }
     public void setLocation(Location l) {
         this.location = l;
-        l.addShipmentOrder(this);
+        // l.addShipmentOrder(this);
     }
 
     public Supplier getSupplier() {
@@ -90,7 +93,7 @@ public class ShipmentOrder {
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("," , ShipmentOrder.class.getSimpleName() + "[" , "]");
-        sj.add(id.toString()).add(dateShipped.toString).add("product="+product.toString()).add("location="+location.toString().add("supplier="+supplier.toString()));
+        // sj.add(id.toString()).add(dateShipped.toString).add("product="+product.toString()).add("location="+location.toString().add("supplier="+supplier.toString()));
         return sj.toString();
     }
 
