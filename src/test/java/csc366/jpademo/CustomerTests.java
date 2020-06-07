@@ -114,10 +114,9 @@ public class CustomerTests {
     @Test
     @Order(3)
     public void testStateWithMostCustomers() {
-        List<Customer> states = customerRepository.findMostState();
-        System.out.println(states);
-        // log.info(state);
-        // assertEquals(state, "CA");
+        List<String> states = customerRepository.findMostState();
+        // System.out.println(states);
+        log.info(states.get(0));
     }
     // @Test
     // @Order(3)

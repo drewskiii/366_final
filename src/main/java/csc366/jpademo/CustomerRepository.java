@@ -49,12 +49,23 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
 
 
+    // @Query(value = "select new.mx from ("+
+    //                 "select n.state, max(n.state_cnt) mx from " +
+    //                     "(select count(*) as state_cnt, c.state as state " +
+    //                     "from customer as c " +
+    //                     "group by c.state) as n " + 
+    //                 "group by n.state) as new", nativeQuery = true)
     @Query(value = "select n.state, max(n.state_cnt) mx from " +
-                        "(select count(*) as state_cnt, c.state as state" +
+                        "(select count(*) as state_cnt, c.state as state " +
                         "from customer as c " +
                         "group by c.state) as n " + 
-                    "group by n.state;", nativeQuery = true)
-    List<Customer> findMostState();
+                    "group by n.state " +
+                    "order by mx desc " +
+                    "limit 1", nativeQuery = true)
+    // @Query(value = "select count(*) as state_cnt, c.state as state " +
+    // "from customer as c " +
+    // "group by c.state", nativeQuery = true)
+    List<String> findMostState();
     // double findMostSpent();
     // JPQL query with join
     // @Query("select p from Person p join p.addresses addr where p.firstName = :name or p.lastName = :name")
