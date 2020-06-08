@@ -117,12 +117,13 @@ public class CustomerTests {
         List<String> states = customerRepository.findMostState();
         // System.out.println(states);
         log.info(states.get(0));
+        assertEquals(states.get(0), "CA,3");
     }
-    // @Test
-    // @Order(3)
-    // public void testCustomerWhoSpentTheMostCoffee() {
-
-    // }
+    @Test
+    @Order(4)
+    public void testCustomerWhoSpentTheMostCoffee() {
+        
+    }
     
 
     
