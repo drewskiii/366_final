@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.UniqueConstraint;
@@ -33,6 +34,18 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = true)  // name = "customer_id" from customer's "mappedBy"
     private Customer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = true)
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id", nullable = true)
+    private Employee emp;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id", nullable = true)
+    private Location location;
 
     @Column(name = "totalprice")
     private double totalPrice;
@@ -74,6 +87,33 @@ public class Transaction {
     public void setCustomer(Customer c) {
         this.customer = c;
     }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product p) {
+        this.product = p;
+    } 
+
+    public Employee getEmployee() {
+        return emp;
+    }
+
+    public void setEmployee(Employee e) {
+        this.emp = e;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location l) {
+        this.location = l;
+    }
+
+
+
 
     @Override
     public String toString()
