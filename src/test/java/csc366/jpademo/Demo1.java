@@ -61,59 +61,59 @@ public class Demo1 {
 	personRepository.saveAndFlush(person);
     }
 	 
-	 /* For reference, needs to be removed
-    @Test
-    @Order(1)
-    public void testPersonAndAddress() {
-	Person person2 = personRepository.findByFirstName("test");
+	//   For reference, needs to be removed
+ //    @Test
+ //    @Order(1)
+ //    public void testPersonAndAddress() {
+	// Person person2 = personRepository.findByFirstName("test");
 
-	log.info(person2.toString());
+	// log.info(person2.toString());
 	
-	assertNotNull(person);
-	assertEquals(person2.getAddresses().size(), 1);
-    }
+	// assertNotNull(person);
+	// assertEquals(person2.getAddresses().size(), 1);
+ //    }
     
-    @Test
-    @Order(2)
-    public void testPersonAddressQuery() {
-	Person person2 = personRepository.findByFirstName("test");
-	assertNotNull(person);
-	assertEquals(person2.getFirstName(), person.getFirstName());
-	assertEquals(person2.getLastName(), person.getLastName());
-    }
+ //    @Test
+ //    @Order(2)
+ //    public void testPersonAddressQuery() {
+	// Person person2 = personRepository.findByFirstName("test");
+	// assertNotNull(person);
+	// assertEquals(person2.getFirstName(), person.getFirstName());
+	// assertEquals(person2.getLastName(), person.getLastName());
+ //    }
 
 
-    @Test
-    @Order(3)
-    public void testRemoveAddress() {
-	Person p = personRepository.findByFirstName("test");
-        Address a = new ArrayList<Address>(p.getAddresses()).get(0);  // get on address
-	p.removeAddress(a);
-	personRepository.save(p);
-        log.info(p.toString());
-    }
+ //    @Test
+ //    @Order(3)
+ //    public void testRemoveAddress() {
+	// Person p = personRepository.findByFirstName("test");
+ //        Address a = new ArrayList<Address>(p.getAddresses()).get(0);  // get on address
+	// p.removeAddress(a);
+	// personRepository.save(p);
+ //        log.info(p.toString());
+ //    }
 
-    @Test
-    @Order(4)
-    public void testRemoveAddressAndFlush() {
-	Person p = personRepository.findByFirstName("test");
-        Address a = new ArrayList<Address>(p.getAddresses()).get(0);  // get on address
-	p.removeAddress(a);
-	personRepository.saveAndFlush(p);
-        log.info(p.toString());
-    }
+ //    @Test
+ //    @Order(4)
+ //    public void testRemoveAddressAndFlush() {
+	// Person p = personRepository.findByFirstName("test");
+ //        Address a = new ArrayList<Address>(p.getAddresses()).get(0);  // get on address
+	// p.removeAddress(a);
+	// personRepository.saveAndFlush(p);
+ //        log.info(p.toString());
+ //    }
     
-    @Test
-    @Order(5)
-    public void testJpqlJoin() {
-	Person p = personRepository.findByNameWithAddressJpql("test");
-	log.info(p.toString());
+ //    @Test
+ //    @Order(5)
+ //    public void testJpqlJoin() {
+	// Person p = personRepository.findByNameWithAddressJpql("test");
+	// log.info(p.toString());
 
-	p.addAddress(new Address("2 Grand Ave", "SLO", "CA", "93407-0002"));
-	personRepository.saveAndFlush(p);
+	// p.addAddress(new Address("2 Grand Ave", "SLO", "CA", "93407-0002"));
+	// personRepository.saveAndFlush(p);
 
-	p = personRepository.findByNameWithAddressJpql("test");
-	log.info(p.toString());
-    }*/
+	// p = personRepository.findByNameWithAddressJpql("test");
+	// log.info(p.toString());
+ //    }
 
 }
