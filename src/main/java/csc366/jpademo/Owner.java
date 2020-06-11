@@ -1,14 +1,12 @@
 package csc366.jpademo;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "Owner")
 public class Owner {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,7 +23,7 @@ public class Owner {
 
    @ManyToOne
    @JoinColumn(name = "position_id", referencedColumnName = "id")
-   private long position;
+   private Position position;
 
    @Column(name="date_appointed")
    private Date dateAppointed;
@@ -80,11 +78,11 @@ public class Owner {
       this.dateAppointed = dateAppointed;
    }
 
-   public long getPosition() {
+   public Position getPosition() {
       return this.position;
    }
 
-   public void setPosition(long position) {
+   public void setPosition(Position position) {
       this.position = position;
    }
 
@@ -113,7 +111,7 @@ public class Owner {
       return this;
    }
 
-   public Owner position(long position) {
+   public Owner position(Position position) {
       this.position = position;
       return this;
    }
