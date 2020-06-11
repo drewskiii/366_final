@@ -38,10 +38,6 @@ public class Supplier {
     )
     private List<Location> locations = new ArrayList<>();
 
-    // This is the other end of the many to many that goes in the locations class (?)
-    // @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy="locations")
-    // private List<Supplier> suppliers;
-
     @OneToMany(
         mappedBy = "supplier",
         cascade = CascadeType.ALL,
