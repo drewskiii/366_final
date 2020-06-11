@@ -19,35 +19,42 @@ public class Employee {
    private String lastName;
 
    @NotNull
-   @OneToMany
+   @ManyToOne
+   @JoinColumn(name = "position_id", insertable = false, updatable = false)
    private Position position;
 
    @NotNull
-   @OneToOne
+   @ManyToOne
+   @JoinColumn(name = "paidBy_id", insertable = false, updatable = false)
    private Owner paidBy;
 
-   @OneToMany
-   @JoinColumn
+   @ManyToOne
+   @JoinColumn(name = "location_id", insertable = false, updatable = false)
    private Location location;
 
    @NotNull
    @Column
    private int hours;
 
-   public Employee(@NotNull String firstName, @NotNull String lastName,
-    @NotNull Position position, @NotNull Owner paidBy, Location location,
-    @NotNull int hours) {
+   public Employee () {
+
+   }
+
+
+   public Employee(String firstName, String lastName,
+    int hours) {
       this.firstName = firstName;
       this.lastName = lastName;
-      this.position = position;
-      this.paidBy = paidBy;
-      this.location = location;
       this.hours = hours;
    }
 
    public Long getId() {
       return id;
    }
+
+   public void setId(Long id) {
+      this.id = id;
+    }
 
    public String getFirstName() {
       return firstName;
