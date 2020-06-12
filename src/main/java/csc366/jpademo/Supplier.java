@@ -71,11 +71,9 @@ public class Supplier {
     }
     public void addLocation(Location l) {
         this.locations.add(l);
-        // l.setSupplier(this);
     }
     public void removeLocation(Location l) {
         this.locations.remove(l);
-        // l.setSupplier(null);
     }
 
     public List<ShipmentOrder> getShipmentOrders() {

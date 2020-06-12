@@ -43,6 +43,12 @@ public class ShipmentOrder {
     @JoinColumn(name = "supplier_id", nullable = true)
     private Supplier supplier;
 
+    public ShipmentOrder() { }
+
+    public ShipmentOrder(Date dateShipped) {
+        this.dateShipped = dateShipped;
+    }
+
     public Long getId() {
         return this.id;
     }
@@ -69,7 +75,6 @@ public class ShipmentOrder {
     }
     public void setLocation(Location l) {
         this.location = l;
-        // l.addShipmentOrder(this);
     }
 
     public Supplier getSupplier() {
