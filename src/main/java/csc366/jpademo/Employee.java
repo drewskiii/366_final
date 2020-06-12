@@ -18,17 +18,15 @@ public class Employee {
    @Column(unique=true, name="last_name")
    private String lastName;
 
-   @NotNull
-   @ManyToOne
+   @ManyToOne(cascade = {CascadeType.ALL})
    @JoinColumn(name = "position_id", insertable = false, updatable = false)
    private Position position;
 
-   @NotNull
-   @ManyToOne
+   @ManyToOne(cascade = {CascadeType.ALL})
    @JoinColumn(name = "paidBy_id", insertable = false, updatable = false)
    private Owner paidBy;
 
-   @ManyToOne
+   @ManyToOne(cascade = {CascadeType.ALL})
    @JoinColumn(name = "location_id", insertable = false, updatable = false)
    private Location location;
 
@@ -42,10 +40,13 @@ public class Employee {
 
 
    public Employee(String firstName, String lastName,
-    int hours) {
+    int hours, Location location, Owner owner, Position position) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.hours = hours;
+      this.location = location;
+      this.paidBy = owner;
+      this.position = position;
    }
 
    public Long getId() {
