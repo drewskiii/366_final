@@ -1,7 +1,7 @@
 -- Find all the locations the supplier (ex. id 4) needs to ship to
 SELECT *
 FROM Location l
-JOIN Supplier s ON l.id = s.location     -- But there are multiple locations so how does this work?
+JOIN Supplier s ON l.id = s.location
 WHERE s.id = 4;
 
 -- Get the price of each product (that gets shipped from a certain supplier?)
@@ -14,7 +14,7 @@ WHERE s.id = 4;
 -- Find the manager of each location things need to be shipped to
 SELECT m.id, l.id
 FROM Location l
-JOIN Supplier s ON l.id = s.location     -- Same problem as first query
+JOIN Supplier s ON l.id = s.location
 JOIN Manager m ON l.manager = m.id
 WHERE s.id = 4;
 

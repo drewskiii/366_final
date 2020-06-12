@@ -38,10 +38,6 @@ public class Supplier {
     )
     private List<Location> locations = new ArrayList<>();
 
-    // This is the other end of the many to many that goes in the locations class (?)
-    // @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy="locations")
-    // private List<Supplier> suppliers;
-
     @OneToMany(
         mappedBy = "supplier",
         cascade = CascadeType.ALL,
@@ -75,11 +71,9 @@ public class Supplier {
     }
     public void addLocation(Location l) {
         this.locations.add(l);
-        // l.setSupplier(this);
     }
     public void removeLocation(Location l) {
         this.locations.remove(l);
-        // l.setSupplier(null);
     }
 
     public List<ShipmentOrder> getShipmentOrders() {
@@ -87,7 +81,7 @@ public class Supplier {
     }
     public void addShipmentOrder(ShipmentOrder s) {
         this.shipmentOrders.add(s);
-        s.setSupplier(this);
+        // s.setSupplier(this);
     }
     public void removeShipmentOrder(ShipmentOrder s) {
         this.shipmentOrders.remove(s);

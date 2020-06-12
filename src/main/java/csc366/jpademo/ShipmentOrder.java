@@ -31,27 +31,23 @@ public class ShipmentOrder {
     @Column(name="date_shipped")
     private Date dateShipped;
 
-    // I'm not actually sure about this one
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", nullable = true)
     private Location location;
 
-    // This part goes in the location table (?)
-    // @OneToMany(
-    //     mappedBy = "location",
-    //     cascade = CascadeType.ALL,
-    //     orphanRemoval = true,
-    //     fetch = FetchType.LAZY
-    // )
-    // private List<ShipmentOrder> shipmentOrders = new ArrayList<>();
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id", nullable = true)
     private Supplier supplier;
+
+    public ShipmentOrder() { }
+
+    public ShipmentOrder(Date dateShipped) {
+        this.dateShipped = dateShipped;
+    }
 
     public Long getId() {
         return this.id;
@@ -79,7 +75,6 @@ public class ShipmentOrder {
     }
     public void setLocation(Location l) {
         this.location = l;
-        // l.addShipmentOrder(this);
     }
 
     public Supplier getSupplier() {
@@ -87,7 +82,7 @@ public class ShipmentOrder {
     }
     public void setSupplier(Supplier s) {
         this.supplier = s;
-        s.addShipmentOrder(this);
+        // s.addShipmentOrder(this);
     }
 
     @Override
