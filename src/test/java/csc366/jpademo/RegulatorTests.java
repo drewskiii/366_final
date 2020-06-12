@@ -36,7 +36,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 	"logging.pattern.console= %d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 })
 @TestMethodOrder(OrderAnnotation.class)
-public class Demo4 {
+public class RegulatorTests {
 	private final static Logger log = LoggerFactory.getLogger(Demo4.class);
 
 	@Autowired
