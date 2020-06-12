@@ -38,7 +38,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @TestMethodOrder(OrderAnnotation.class)
 public class OwnerTests {
 
-    private final static Logger log = LoggerFactory.getLogger(Demo0.class);
+    private final static Logger log = LoggerFactory.getLogger(OwnerTests.class);
     
     @Autowired
     private OwnerRepository ownerRepository;
