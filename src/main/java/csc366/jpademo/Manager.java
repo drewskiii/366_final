@@ -4,17 +4,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.StringJoiner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -32,12 +22,12 @@ public class Manager {
     @Column(unique=true, name="email")
     private String email;
 
-    @OneToOne(mappedBy="location")
-    @JoinColumn(name = "location_id", nullable = false)
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "location_id", insertable = false, updatable = false)
     private Location location;
 
-    @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "owner_id", insertable = false, updatable = false)
     private Owner owner;
     
     public Manager() { }
