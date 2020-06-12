@@ -40,7 +40,7 @@ public class Location {
     @Column(name="state")
     private String state;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "manager_id",insertable = false, updatable = false)
     private Manager manager;
     
