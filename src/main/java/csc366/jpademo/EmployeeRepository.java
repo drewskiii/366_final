@@ -8,9 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-   @Query("from Employee e join e.location loc where loc = :location")
-   Employee findByLocationJpql(@Param("location") String location);
-
-   @Query("from Employee e join e.position pos where pos = :position")
-   Employee findByPositionJpql(@Param("position") String position);
+   Employee findByLastName(String lastName);
 }

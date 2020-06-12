@@ -16,10 +16,9 @@ public class Position {
 
    @NotNull
    @Column
-   private float payRate;
+   private double payRate;
 
-   public Position(Long id, String title, float payRate) {
-      this.id = id;
+   public Position(String title, double payRate) {
       this.title = title;
       this.payRate = payRate;
    }
@@ -32,7 +31,7 @@ public class Position {
       return title;
    }
 
-   public float getPayRate() {
+   public double getPayRate() {
       return payRate;
    }
 
@@ -44,7 +43,7 @@ public class Position {
       this.title = title;
    }
 
-   public void setPayRate(float payRate) {
+   public void setPayRate(double payRate) {
       this.payRate = payRate;
    }
 
