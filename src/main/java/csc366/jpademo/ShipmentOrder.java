@@ -35,11 +35,11 @@ public class ShipmentOrder {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", nullable = true)
     private Location location;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id", nullable = true)
     private Supplier supplier;
 
@@ -82,7 +82,7 @@ public class ShipmentOrder {
     }
     public void setSupplier(Supplier s) {
         this.supplier = s;
-        s.addShipmentOrder(this);
+        // s.addShipmentOrder(this);
     }
 
     @Override

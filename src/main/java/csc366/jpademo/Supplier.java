@@ -81,7 +81,7 @@ public class Supplier {
     }
     public void addShipmentOrder(ShipmentOrder s) {
         this.shipmentOrders.add(s);
-        s.setSupplier(this);
+        // s.setSupplier(this);
     }
     public void removeShipmentOrder(ShipmentOrder s) {
         this.shipmentOrders.remove(s);
